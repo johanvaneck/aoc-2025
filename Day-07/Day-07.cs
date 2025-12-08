@@ -76,6 +76,9 @@ public static class Day07
             {
                 matrix[iRow + i][iCol] = '|';
             }
+            // PrintMatrix(matrix);
+            // Console.ReadLine();
+            // Console.Clear();
             i++;
         }
     }
@@ -101,7 +104,7 @@ public static class Day07
         if (countCache.ContainsKey((iRow, iCol)))
         {
             var cache = countCache[(iRow, iCol)];
-            matrix[iRow][iCol] = cache.ToString()[0];
+            matrix[iRow][iCol] = 'X';
             return cache;
         }
         if (iRow < 0 || iRow >= matrix.Length || iCol < 0 || iCol >= matrix[iRow].Length)
@@ -122,16 +125,31 @@ public static class Day07
                 return count;
             }
             matrix[iRow + i][iCol] = '|';
-            PrintMatrix(matrix);
+            // PrintMatrix(matrix);
+            // Thread.Sleep(3);
             // Console.ReadLine();
+            // Console.Clear();
             i++;
         }
         return 1;
     }
 
-    public static void PrintMatrix(char[][] matrix)
+    public static void PrintMatrix(char[][] matrix, int? iRow, int? iCol, char? marker)
     {
-        foreach (var line in matrix)
-            Console.WriteLine(string.Join("", line));
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                if (iRow == i && iCol == j && marker != null)
+                {
+                    Console.Write(marker);
+                }
+                else
+                {
+                    Console.Write(matrix[i][j]);
+                }
+            }
+            Console.WriteLine();
+        }
     }
 }
