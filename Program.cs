@@ -1,3 +1,3 @@
 ﻿using Aoc2025;
 
-Day09.Run();
+Day11.Run();
